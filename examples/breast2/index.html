@@ -24,26 +24,26 @@
 			config1 = {
 				"dom_container_id": "container",
 				"slicemaps_paths": [
-		    'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_1.png',
+		            'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_1.png',
                     'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_2.png',
                     'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_3.png',
                     'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_4.png',
                     'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_5.png',
                     'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_6.png',
                     'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_7.png',
-                    'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_7.png'
+                    'Jena_P16_km3-OverlaysNew_oldTransm-reflXY_fused_4x4_8.png',
 				],
 
-				"slices_range": [0, 256],
+				"slices_range": [0, 128],
 				"gray_min": 0.1,
-				"gray_max": 0.6,
+				"gray_max": 0.9,
 				"row_col": [4, 4],
 				"steps": 100,
 				"renderer_size": [512, 512],
-				"renderer_canvas_size": ['*', '*'],
-				"absorption_mode": 1,
-				"opacity_factor": 35,
-				"color_factor": 3,
+				"renderer_canvas_size": [512, 512],
+				"absorption_mode": 2,
+				"opacity_factor": 4,
+				"color_factor": 2,
 				"x_min": 0.0,
 				"x_max": 1.0,
 				"auto_steps": true,
@@ -51,8 +51,11 @@
 	                {"pos": 0.25,"color": "#7CFF79"},
 	                {"pos": 0.5, "color": "#FF9400"},
 	                {"pos": 1.0, "color": "#7F0000"},
-	            ]
-
+	            ],
+                "refl":0.5,
+                "sat" :1,
+                "sos" :1.3
+                
 			};
 
 			rcl2 = new VRC.VolumeRaycaster(config1);

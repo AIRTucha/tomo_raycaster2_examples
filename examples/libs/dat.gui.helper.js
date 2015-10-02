@@ -17,7 +17,11 @@ guiControls = new function() {
 	this.z_max = -1;
 	this.colormap = 13;
 	this.thresholding = 4;
-
+    
+    this.refl = 0.5
+    this.sos = 0.5
+    this.sat = 0.5
+    
 	this.auto_steps = -1;
 };
 
@@ -37,6 +41,9 @@ var UpdateGUI = function(config) {
 	guiControls.z_min = config["z_min"];
 	guiControls.z_max = config["z_max"];
 	guiControls.auto_steps = config["auto_steps"];
+    guiControls.refl = config["refl"];
+    guiControls.sat = config["sat"];
+    guiControls.sos = config["sos"];
 
 };
 
@@ -90,7 +97,7 @@ var InitGUI = function(config, rcl2) {
 		rcl2.setAutoStepsOn(value);
 	});
 
-	var absorbtion_mode_controller = gui.add(guiControls, 'absorption_mode', {"MIPS": 0, "X-ray": 1, "Maximum projection intensivity": 2}).listen();
+	var absorbtion_mode_controller = gui.add(guiControls, 'absorption_mode', {"Tumor Cutoff": 0, "Refl+Sos": 1, "Real Body": 2}).listen();
 	absorbtion_mode_controller.onChange(function(value) {
 		rcl2.setAbsorptionMode(value);
 	});
@@ -114,6 +121,22 @@ var InitGUI = function(config, rcl2) {
 	gray_max_controller.onChange(function(value) {
 		rcl2.setGrayMaxValue(value);
 	});
+    
+    var refl = gui.add(guiControls, 'refl', 0, 2, 0.1).listen();
+	refl.onChange(function(value) {
+		rcl2.setRefl(value);
+	});
+    
+    var sos = gui.add(guiControls, 'sos', 0, 2, 0.1).listen();
+	sos.onChange(function(value) {
+		rcl2.setSos(value);
+	});
+
+    var sat = gui.add(guiControls, 'sat', 0, 2, 0.1).listen();
+	sat.onChange(function(value) {
+		rcl2.setSat(value);
+	});
+
 
 	var render_size_controller = gui.add(guiControls, 'render_size', {"128": 0, "256": 1, "512": 2, "768": 3, "1024": 4, "2048": 5, "4096": 6, "*": 7, "default": 8}, 8);
 	render_size_controller.onFinishChange(function(value) {
